@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { name: "Home", link: "/" },
@@ -27,7 +28,7 @@ export function Navbar() {
   // Custom Logo Component for Webenze
   const Logo = () => (
     <Link
-      href="/Webenze.Labs Logo.png"
+      href="/"
       className="relative z-20 mr-4 flex items-center px-1 py-1"
     >
       <BrandLogo />
@@ -42,6 +43,7 @@ export function Navbar() {
           <Logo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <NavbarButton variant="primary">Konsultasi Gratis</NavbarButton>
           </div>
         </NavBody>
@@ -50,11 +52,14 @@ export function Navbar() {
         <MobileNav>
           <MobileNavHeader>
             <Logo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              aria-label="Toggle Menu"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                aria-label="Toggle Menu"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              />
+            </div>
           </MobileNavHeader>
 
           <MobileNavMenu
@@ -86,5 +91,3 @@ export function Navbar() {
     </div>
   );
 }
-
-

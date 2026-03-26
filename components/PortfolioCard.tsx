@@ -22,7 +22,7 @@ export const PortfolioCard = ({
   priority = false
 }: PortfolioCardProps) => {
   return (
-    <Link href={`/portfolio/${slug}`} className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-slate-100 border border-slate-200 block shadow-sm hover:shadow-2xl transition-all duration-500">
+    <Link href={`/portfolio/${slug}`} className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block shadow-sm hover:shadow-2xl dark:shadow-primary-site/10 transition-all duration-500">
       {/* Background Image */}
       <Image 
         src={thumbnailUrl || "/placeholder.jpg"} 
@@ -39,10 +39,10 @@ export const PortfolioCard = ({
       {/* Content Overlay */}
       <div className="absolute inset-0 p-8 flex flex-col justify-end">
         <div className="space-y-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#3B82F6] bg-black/20 backdrop-blur-md px-2 py-1 rounded inline-block">
+          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#3B82F6] bg-black/20 dark:bg-primary-site/20 backdrop-blur-md px-2 py-1 rounded inline-block">
             {category}
           </p>
-          <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+          <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
             {title}
           </h3>
           

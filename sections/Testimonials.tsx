@@ -27,7 +27,7 @@ const testimonialsData = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-white border-t border-slate-100">
+    <section id="testimonials" className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
       <div className="container mx-auto px-6 relative z-10">
         <SectionHeading 
           title="Testimoni Client Webenze" 

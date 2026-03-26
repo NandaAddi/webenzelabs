@@ -32,7 +32,7 @@ const webenzeFaqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 relative bg-white border-t border-slate-100 shrink-0">
+    <section id="faq" className="py-24 relative bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 shrink-0 transition-colors duration-500">
       <div className="container mx-auto px-6 max-w-4xl">
         <SectionHeading 
           title="Pertanyaan Umum (FAQ)" 
@@ -45,12 +45,12 @@ export function FAQ() {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border border-slate-100 rounded-[2rem] px-8 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500"
+                className="border border-slate-100 dark:border-slate-800 rounded-[2rem] px-8 bg-slate-50/50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:shadow-none transition-all duration-500"
               >
-                <AccordionTrigger className="py-8 text-lg font-extrabold text-slate-900 group-hover:no-underline tracking-tight">
+                <AccordionTrigger className="py-8 text-lg font-extrabold text-slate-900 dark:text-slate-100 group-hover:no-underline tracking-tight">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="pb-8 text-slate-600 leading-relaxed text-base font-medium">
+                <AccordionContent className="pb-8 text-slate-600 dark:text-slate-400 leading-relaxed text-base font-medium">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

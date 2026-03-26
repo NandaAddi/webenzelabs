@@ -1,0 +1,14 @@
+[
+    {
+        "color": "lightbrown",
+        "type": "cat",
+        "size": "nano",
+        "name": "Mipaw"
+    },
+    {
+        "color": "gray",
+        "type": "cockatiel",
+        "size": "nano",
+        "name": "Marmut"
+    }
+]

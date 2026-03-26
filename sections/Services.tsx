@@ -10,8 +10,8 @@ const ServicesCarousel = dynamic(() => import("@/components/ServicesCarousel"), 
 
 export function Services() {
   return (
-    <section id="services" className="py-24 relative bg-gradient-to-b from-white to-blue-50/30 overflow-hidden border-b border-slate-100">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-site/5 rounded-full blur-[150px] pointer-events-none" />
+    <section id="services" className="py-24 relative bg-white dark:bg-slate-950 overflow-hidden border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-site/5 dark:bg-primary-site/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <SectionHeading
           title="Layanan Webenze"

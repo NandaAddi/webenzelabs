@@ -1,13 +1,11 @@
-import React from "react";
 import { Metadata } from "next";
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/ui/Button";
+import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { ProjectClientBody } from "@/components/ProjectClientBody";
 import { CTA } from "@/sections/CTA";
-import { PortfolioGallery } from "@/components/PortfolioGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -41,119 +39,57 @@ export default async function PortfolioDetailPage({ params }: Props) {
     notFound();
   }
 
-  const formatUrl = (url: string) => {
-    if (!url) return "";
-    return url.startsWith("http") ? url : `https://${url}`;
-  };
-
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white dark:bg-slate-950 min-h-screen transition-colors duration-500">
       {/* Editorial Header Section */}
-      <div className="relative h-[65vh] w-full border-b border-slate-100 overflow-hidden">
+      <div className="relative h-[80vh] w-full border-b border-slate-100 dark:border-slate-800 overflow-hidden bg-slate-50 dark:bg-slate-900">
         <Image
           src={portfolio.header_image_url || portfolio.thumbnail_url}
           alt={`${portfolio.title} Header`}
           fill
           sizes="100vw"
-          className="object-cover opacity-10 filter grayscale-0 scale-105"
+          className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-slate-900/20" />
         
-        <div className="absolute inset-0 flex flex-col justify-end container mx-auto px-6 pb-20 z-10">
-          <Link href="/portfolio" className="inline-flex items-center gap-3 text-slate-400 hover:text-primary-site mb-8 transition-all duration-300 group">
-            <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-primary-site/5">
-               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <div className="absolute inset-0 flex flex-col justify-end container mx-auto px-6 pb-24 z-10">
+          <Link href="/portfolio" className="inline-flex items-center gap-3 text-white/60 hover:text-white mb-12 transition-all duration-300 group">
+            <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-primary-site group-hover:text-white transition-all shadow-sm">
+               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             </div>
-            <span className="text-[10px] uppercase tracking-[0.4em] font-extrabold">Back to Portfolio</span>
+            <span className="text-[11px] uppercase tracking-[0.4em] font-extrabold">Back to Showcase</span>
           </Link>
           
-          <div className="max-w-5xl">
-            <p className="text-primary-site font-extrabold uppercase tracking-[0.3em] text-xs mb-6 px-1">{portfolio.category}</p>
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter text-slate-900 leading-[0.95] mb-4">
+          <div className="max-w-6xl">
+            <div className="flex items-center gap-4 mb-8">
+                <span className="h-px w-12 bg-primary-site" />
+                <p className="text-primary-site font-extrabold uppercase tracking-[0.4em] text-xs">{portfolio.category}</p>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-white leading-[1.1] mb-8 text-balance">
               {portfolio.title}
             </h1>
+            <p className="text-lg md:text-2xl text-white/80 font-medium tracking-tight max-w-3xl leading-relaxed text-balance">
+                Transforming digital boundaries through innovative design and purpose-driven technology.
+            </p>
           </div>
+        </div>
+
+        {/* Decorative Scroll Hint */}
+        <div className="absolute bottom-12 right-12 hidden lg:flex flex-col items-center gap-6">
+            <span className="text-[10px] font-extrabold uppercase tracking-[.4em] text-white/40 transform rotate-180 [writing-mode:vertical-lr]">Scroll Exploration</span>
+            <div className="h-24 w-px bg-white/20 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-primary-site animate-scroll-hint" />
+            </div>
         </div>
       </div>
 
       {/* Structured Content Layout */}
-      <div className="container mx-auto px-6 py-32 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
-          
-          {/* Main Column */}
-          <div className="lg:col-span-8 space-y-32">
-            {/* Enhanced Gallery Component */}
-            <PortfolioGallery 
-              images={portfolio.gallery_images} 
-              title={`${portfolio.title} Project Showcase`} 
-            />
-
-            {/* Project Summary */}
-            <div className="space-y-16 pt-20 border-t border-slate-100">
-                <div className="space-y-8">
-                   <h2 className="text-4xl font-extrabold text-slate-900 tracking-tighter">The Challenge & Solution</h2>
-                   <p className="text-2xl text-slate-500 leading-relaxed font-medium max-w-4xl">
-                       {portfolio.description}
-                   </p>
-                </div>
-                
-                <div className="h-1 w-24 bg-primary-site rounded-full" />
-
-                <div 
-                    className="rich-text-content"
-                    dangerouslySetInnerHTML={{ __html: portfolio.content }} 
-                />
-            </div>
-          </div>
-
-          {/* Editorial Sidebar */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-40 space-y-16">
-                <div className="p-12 bg-slate-50 rounded-[3rem] border border-slate-100 shadow-sm space-y-12">
-                    <div className="space-y-3">
-                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.3em] font-extrabold">Industry Segment</p>
-                        <p className="text-xl text-slate-900 font-extrabold tracking-tight">{portfolio.category}</p>
-                    </div>
-
-                    <div className="space-y-3">
-                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.3em] font-extrabold">Launch Date</p>
-                        <p className="text-xl text-slate-900 font-extrabold tracking-tight">{new Date(portfolio.created_at).toLocaleDateString("id-ID", { year: 'numeric', month: 'long' })}</p>
-                    </div>
-                    
-                    {portfolio.project_url && (
-                        <div className="space-y-6 pt-4">
-                            <p className="text-[10px] text-slate-400 uppercase tracking-[0.3em] font-extrabold">Live Experience</p>
-                            <a 
-                                href={formatUrl(portfolio.project_url)} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-3 text-slate-900 hover:text-primary-site transition-all duration-300 font-extrabold text-xl tracking-tighter border-b-2 border-slate-100 hover:border-primary-site pb-2"
-                            >
-                                Visit Website <ArrowSquareOut className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </a>
-                        </div>
-                    )}
-
-                    <div className="pt-12 space-y-8 border-t border-slate-200/50">
-                        <p className="text-slate-500 text-base leading-relaxed font-medium">Tertarik untuk mengembangkan platform serupa untuk bisnis Anda?</p>
-                        <Link href="/contact" className="block">
-                            <Button className="w-full bg-primary-site hover:bg-primary-hover text-white border-none py-8 rounded-2xl font-bold uppercase tracking-widest text-[10px] shadow-xl shadow-blue-500/20 active:scale-95 transition-all">
-                                Start Your Project
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="px-6 flex items-center justify-between text-slate-300">
-                    <span className="text-[9px] font-extrabold uppercase tracking-[0.4em]">Webenze Portfolio Collection © 2026</span>
-                </div>
-            </div>
-          </div>
-        </div>
+      <div className="container mx-auto px-6 py-20 lg:py-40 relative z-10">
+         <ProjectClientBody portfolio={portfolio} />
       </div>
 
-      <div className="mt-20">
+      <div className="mt-32 border-t border-slate-100 dark:border-slate-800 transition-colors">
          <CTA />
       </div>
     </div>

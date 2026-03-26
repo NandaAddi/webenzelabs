@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -12,7 +13,13 @@ interface BrandsMarqueeProps {
 }
 
 export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
+  const [duration, setDuration] = React.useState(30);
   const brandsTripled = [...brands, ...brands, ...brands];
+
+  React.useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    setDuration(isMobile ? 12 : 30);
+  }, []);
 
   return (
     <div className="flex relative items-center">
@@ -21,12 +28,13 @@ export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
       <div className="absolute right-0 top-0 bottom-0 w-32 md:w-60 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
 
       <motion.div
+        key={duration} // Re-mount when duration changes to restart animation with new value
         className="flex gap-10 md:gap-30 items-center shrink-0"
         animate={{
           x: ["0%", "-33.33%"],
         }}
         transition={{
-          duration: 50,
+          duration: duration,
           repeat: Infinity,
           ease: "linear",
         }}

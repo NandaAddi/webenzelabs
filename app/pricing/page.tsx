@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-white dark:bg-slate-950 transition-colors duration-500">
       <Pricing />
       <FAQ />
       <CTA />

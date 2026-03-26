@@ -21,25 +21,25 @@ const services: ServiceSlide[] = [
     title: "Website Design",
     description: "Desain estetis dan fungsional dengan teknologi terbaru.",
     image: "/images/webdesign.png",
-    bgColor: "bg-white",
+    bgColor: "bg-white dark:bg-slate-900",
   },
   {
     title: "Mobile Design",
     description: "Antarmuka mobile modern dan sangat user-friendly.",
     image: "/images/mobiledesign.png",
-    bgColor: "bg-slate-50",
+    bgColor: "bg-slate-50 dark:bg-slate-800/40",
   },
   {
     title: "SEO Optimize",
     description: "Optimasi mesin pencari untuk performa halaman pertama.",
     image: "/images/seoo.png",
-    bgColor: "bg-slate-50",
+    bgColor: "bg-slate-50 dark:bg-slate-800/40",
   },
   {
     title: "Web Development",
     description: "Fitur high-end dan performa maksimal untuk bisnis Anda.",
     image: "/images/web-dev.png",
-    bgColor: "bg-white",
+    bgColor: "bg-white dark:bg-slate-900",
   },
 ];
 
@@ -71,10 +71,10 @@ export default function ServicesCarousel() {
     >
       {services.map((service, idx) => (
         <SwiperSlide key={idx} className="h-auto">
-          <div className={`${service.bgColor} h-full border border-slate-100 rounded-[2.5rem] overflow-hidden flex flex-col group shadow-sm hover:shadow-2xl transition-all duration-700`}>
+          <div className={`${service.bgColor} h-full border border-slate-100 dark:border-slate-800 rounded-[2.5rem] overflow-hidden flex flex-col group shadow-sm hover:shadow-2xl dark:shadow-primary-site/5 transition-all duration-700`}>
             <div className="p-8 pb-0 relative z-10">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-4 tracking-tighter">{service.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tighter">{service.title}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
                 {service.description}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function ServicesCarousel() {
                   src={service.image}
                   alt={service.title}
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl dark:drop-shadow-[0_20px_20px_rgba(39,105,185,0.2)]"
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>

@@ -100,8 +100,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full px-8 py-4 lg:flex pointer-events-auto",
-        visible ? "bg-white/80 border border-slate-100 shadow-xl" : "bg-transparent border-transparent",
+        "relative z-[60] mx-auto hidden w-full flex-row items-center justify-between self-start rounded-full px-8 py-4 lg:flex pointer-events-auto transition-colors duration-500",
+        visible ? "bg-white/80 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-800 shadow-xl" : "bg-transparent border-transparent",
         className
       )}
     >
@@ -125,14 +125,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-5 py-2.5 text-slate-600 hover:text-primary-site transition-colors"
+          className="relative px-5 py-2.5 text-slate-600 dark:text-slate-400 hover:text-primary-site dark:hover:text-blue-400 transition-colors"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-slate-50"
+              className="absolute inset-0 h-full w-full rounded-full bg-slate-50 dark:bg-slate-800"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
@@ -160,7 +160,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 30,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-6 py-4 lg:hidden pointer-events-auto bg-white/90 rounded-[2rem] border border-slate-100 shadow-xl",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-6 py-4 lg:hidden pointer-events-auto bg-white/90 dark:bg-slate-900/90 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-xl transition-colors duration-500",
         className
       )}
     >
@@ -199,7 +199,7 @@ export const MobileNavMenu = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -10 }}
           className={cn(
-            "absolute inset-x-0 top-20 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-3xl bg-white p-8 shadow-2xl border border-slate-100 pointer-events-auto",
+            "absolute inset-x-0 top-20 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-3xl bg-white dark:bg-slate-900 p-8 shadow-2xl border border-slate-100 dark:border-slate-800 pointer-events-auto transition-colors duration-500",
             className
           )}
         >
@@ -218,9 +218,9 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <X className="text-slate-900 w-6 h-6 cursor-pointer" onClick={onClick} />
+    <X className="text-slate-900 dark:text-white w-6 h-6 cursor-pointer" onClick={onClick} />
   ) : (
-    <List className="text-slate-900 w-6 h-6 cursor-pointer" onClick={onClick} />
+    <List className="text-slate-900 dark:text-white w-6 h-6 cursor-pointer" onClick={onClick} />
   );
 };
 
@@ -246,9 +246,9 @@ export const NavbarButton = ({
 
   const variantStyles = {
     primary: "bg-primary-site text-white shadow-lg shadow-blue-500/20 hover:bg-primary-hover hover:shadow-xl hover:shadow-blue-500/30",
-    secondary: "bg-slate-50 text-slate-900 hover:bg-slate-100",
-    dark: "bg-slate-900 text-white hover:bg-black",
-    outline: "bg-transparent border border-slate-200 text-slate-700 hover:bg-slate-50",
+    secondary: "bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700",
+    dark: "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-black dark:hover:bg-slate-100",
+    outline: "bg-transparent border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800",
   };
 
   return (

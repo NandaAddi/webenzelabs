@@ -90,7 +90,7 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             className={cn(
-               "relative rounded-[2rem] border border-slate-100 bg-white/70 backdrop-blur-xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.06)]",
+               "relative rounded-[2rem] border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.06)] dark:shadow-none transition-colors duration-500",
                item.quote ? "w-[320px] md:w-[480px] p-10" : "w-[120px] md:w-[200px] p-6 text-center"
             )}
             key={(item.name || item.title) + idx}
@@ -103,19 +103,19 @@ export const InfiniteMovingCards = ({
                            <Star key={i} weight="fill" className="w-3.5 h-3.5 text-amber-500" />
                        ))}
                    </div>
-                   <span className="relative z-20 text-lg leading-relaxed font-normal text-slate-700">
+                   <span className="relative z-20 text-lg leading-relaxed font-normal text-slate-700 dark:text-slate-300">
                        "{item.quote}"
                    </span>
                  </div>
-                 <div className="relative z-20 flex flex-row items-center gap-4 border-t border-slate-100 pt-8">
-                   <div className="w-12 h-12 rounded-2xl bg-primary-site/5 flex items-center justify-center text-primary-site font-bold text-sm shadow-inner shadow-white">
+                 <div className="relative z-20 flex flex-row items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-8">
+                   <div className="w-12 h-12 rounded-2xl bg-primary-site/5 dark:bg-primary-site/10 flex items-center justify-center text-primary-site dark:text-blue-400 font-bold text-sm shadow-inner shadow-white dark:shadow-slate-800 transition-colors">
                        {item.name?.charAt(0)}
                    </div>
                    <div className="flex flex-col gap-0.5">
-                     <span className="text-base font-bold text-slate-900 tracking-tight">
+                     <span className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
                        {item.name}
                      </span>
-                     <span className="text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
+                     <span className="text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] font-bold">
                        {item.title}
                      </span>
                    </div>
@@ -123,10 +123,10 @@ export const InfiniteMovingCards = ({
                </blockquote>
             ) : (
                <div className="flex flex-col items-center justify-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 mb-2">
-                     <span className="text-xl font-bold text-primary-site">{item.title.charAt(0)}</span>
+                  <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center border border-slate-100 dark:border-slate-700 mb-2">
+                     <span className="text-xl font-bold text-primary-site dark:text-blue-400">{item.title.charAt(0)}</span>
                   </div>
-                  <span className="text-sm font-bold text-slate-900 tracking-tight">{item.title}</span>
+                  <span className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">{item.title}</span>
                </div>
             )}
           </li>
